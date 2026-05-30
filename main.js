@@ -1,4 +1,4 @@
-import { scanDom, watchDOMMutations } from "./domManager.js";
+import { scanDom, watchDOMMutations } from "./domWatcher.js";
 import { parseCustomRule } from "./styleManager.js";
 
 function resetDefaultStyle() {

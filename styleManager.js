@@ -1,5 +1,5 @@
 import styleMap from "./styleMap.js";
-import { styleCache, injectCSSRule } from "./styleStore.js";
+import { styleCache, injectCSSRule } from "./styleSheet.js";
 import parseDynamic from "./dynamicParser.js";
 
 export function computeAndInjectStyles(element) {
@@ -29,8 +29,7 @@ export function computeAndInjectStyles(element) {
 
 function constructCSSBlock(originalClassName, styleObject, pseudoModifier) {
     // Escape special characters for valid CSS selectors
-    const escapedClass = originalClassName.replace(/[:\[\]\.]/g, "\\$&");
-    let cssRule = `.${escapedClass}`;
+    let cssRule = `.${CSS.escape(originalClassName)}`;
 
     // Append standard pseudo-classes if matched
     if (["hover", "focus", "active", "disabled"].includes(pseudoModifier)) {
