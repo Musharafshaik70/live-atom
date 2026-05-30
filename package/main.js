@@ -52,10 +52,10 @@ function init() {
 
 init();
 
-const atomLive = {
+const liveAtom = {
     init,
     addClass: parseCustomRule,
 };
 
 export { init, parseCustomRule as addClass };
-export default atomLive;
+export default liveAtom;
