@@ -1,0 +1,26 @@
+{
+    "name": "live-atom",
+    "version": "1.0.0",
+    "description": "A lightweight runtime css library inspired by tailwind css.",
+    "keywords": [
+        "css",
+        "live-atom",
+        "liveAtom",
+        "tailwind"
+    ],
+    "homepage": "https://github.com/Musharafshaik70/live-atom#readme",
+    "bugs": {
+        "url": "https://github.com/Musharafshaik70/live-atom/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Musharafshaik70/live-atom.git"
+    },
+    "license": "MIT",
+    "author": "Musharaf Shaik",
+    "type": "module",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    }
+}
