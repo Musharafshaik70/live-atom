@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>LiveAtom Framework Test</title>
+
+        <script type="module" src="./index.js"></script>
+    </head>
+    <body
+        class="atom-bg-gray-100 atom-w-full atom-min-h-screen atom-flex atom-flex-col atom-items-center atom-justify-center atom-p-8 atom-text-base"
+    >
+        <div
+            class="atom-p-8 atom-rounded-xl atom-border atom-border-gray-200 atom-w-[400px] atom-max-w-full atom-flex atom-flex-col atom-gap-4 hover:atom-border-blue-400"
+        >
+            <h1 class="atom-text-2xl atom-font-bold atom-text-gray-900 atom-text-center">LiveAtom Test</h1>
+            <p class="atom-text-sm atom-text-gray-600 atom-text-center atom-bg-white">
+                Testing the new dynamic stylesheet injection, pseudo-classes, and transitions.
+            </p>
+
+            <div
+                class="atom-bg-[#e0f2fe] atom-text-[15px] atom-p-4 atom-rounded-md atom-text-blue-800 atom-text-center atom-border atom-border-blue-200"
+            >
+                Arbitrary values <code>[#e0f2fe]</code> working!
+            </div>
+
+            <button
+                id="addNodeBtn"
+                class="atom-w-full atom-bg-blue-500 atom-text-white atom-font-semibold atom-py-2 atom-px-4 atom-rounded-lg hover:atom-bg-blue-600 focus:atom-border focus:atom-border-blue-900 atom-transition-colors atom-duration-200"
+            >
+                Click to add dynamic element
+            </button>
+        </div>
+
+        <div
+            id="dynamicContainer"
+            class="atom-mt-6 atom-flex atom-flex-col atom-gap-3 atom-w-[400px] atom-max-w-full"
+        ></div>
+
+        <script type="module">
+            import Atomicatom from "./index.js";
+
+            // TEST 1: Programmatic Custom Utility Registration
+            // We register a custom class on the fly, then apply it to the DOM.
+            Atomicatom.addClass("atom-custom-shadow", {
+                "box-shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            });
+
+            // Apply it to the main card
+            document.querySelector(".atom-bg-white").classList.add("atom-custom-shadow");
+
+            // TEST 2: DOM MutationObserver Test
+            // When a new element is added to the DOM with atom classes, it should immediately be styled.
+            const btn = document.getElementById("addNodeBtn");
+            const container = document.getElementById("dynamicContainer");
+            let counter = 1;
+
+            btn.addEventListener("click", () => {
+                const newNode = document.createElement("div");
+
+                // Assigning a mix of static, dynamic, and pseudo-classes to a completely new node
+                newNode.className =
+                    "atom-p-3 atom-bg-green-100 atom-text-green-800 atom-rounded-md atom-border atom-border-green-300 hover:atom-bg-green-200 atom-transition-colors atom-duration-300 atom-text-center atom-cursor-pointer";
+
+                newNode.textContent = `Dynamically added element #${counter}`;
+
+                // Append to DOM - The MutationObserver will catch this and inject the CSS instantly
+                container.appendChild(newNode);
+                counter++;
+            });
+        </script>
+    </body>
+</html>
