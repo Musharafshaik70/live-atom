@@ -23,7 +23,21 @@
     "exports": {
         ".": "./main.js"
     },
+    "unpkg": "cdn.js",
+    "jsdelivr": "cdn.js",
+    "files": [
+        "main.js",
+        "cdn.js",
+        "domWatcher.js",
+        "styleManager.js",
+        "dynamicParser.js",
+        "styleMap.js",
+        "styleSheet.js"
+    ],
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "esbuild main.js --bundle --format=iife --global-name=liveAtom --minify --outfile=cdn.js"
+    },
+    "devDependencies": {
+        "esbuild": "^0.28.0"
     }
 }
